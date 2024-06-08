@@ -12,7 +12,6 @@ def load_data():
     return df
 df=load_data()
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')  
-st.sidebar.header('EDA')
 dataset_size = df.shape[0]
 num_features = df.shape[1]
 num_nan_values = df.isna().sum().sum()
