@@ -17,7 +17,13 @@ with st.sidebar:
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
       
-      
+    from pages.file1 import set_variable
+
+    # Define the variable to send to file1.py
+    data_to_send = "Hello from app.py"
+    
+    # Set the variable in file1.py
+    set_variable(data_to_send)
     dataset_size = df.shape[0]
     num_features = df.shape[1]
     num_nan_values = df.isna().sum().sum()
