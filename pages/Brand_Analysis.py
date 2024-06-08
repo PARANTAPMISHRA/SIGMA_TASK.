@@ -8,7 +8,19 @@ from streamlit_option_menu import option_menu
 
 
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
-# Sidebar for accepting input parameters
+
+import sys
+import os
+
+# Ensure the parent directory is in the sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Now you can perform the relative import
+from webapplication.py import uploaded_data
+
+# Use the imported variable
+print(f"The value of 'desired_variable' is: {desired_variable}")
+
 with st.sidebar:
     # Load data
     st.header(' Input data')
