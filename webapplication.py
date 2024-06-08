@@ -17,10 +17,10 @@ with st.sidebar:
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
       
-    from Brand_Analysis.py import set_variable
-    from Geographical_Analysis.py import set_variable
-    from Product_Analysis.py import set_variable
-    from Shipping_Time_Analysis.py import set_variable
+    from pages.Brand_Analysis.py import set_variable
+    from pages.Geographical_Analysis.py import set_variable
+    from pages.Product_Analysis.py import set_variable
+    from pages.Shipping_Time_Analysis.py import set_variable
     # Define the variable to send to file1.py
     data_to_send = "Hello from app.py"
     
