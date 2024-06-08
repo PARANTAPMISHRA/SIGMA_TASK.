@@ -6,17 +6,18 @@ import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
 
+st.set_page_config(layout='wide',page_title='Alpha Markert Analysis')
 # Sidebar for accepting input parameters
 with st.sidebar:
     # Load data
-    st.header('1.1. Input data')
+    st.header(' Input data')
 
-    st.markdown('**1. Use custom data**')
+
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, index_col=False)
       
-    st.set_page_config(layout='wide',page_title='Alpha Markert Analysis')  
+      
     dataset_size = df.shape[0]
     num_features = df.shape[1]
     num_nan_values = df.isna().sum().sum()
