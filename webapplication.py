@@ -22,7 +22,7 @@ if uploaded_file is not None:
     from pages.Product_Analysis.py import set_variable
     from pages.Shipping_Time_Analysis.py import set_variable
     # Define the variable to send to file1.py
-    data_to_send = "Hello from app.py"
+    data_to_send = uploaded_file
     
     # Set the variable in file1.py
     set_variable(data_to_send)
