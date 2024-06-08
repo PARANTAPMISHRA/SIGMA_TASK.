@@ -11,7 +11,7 @@ def load_data():
     df=pd.read_csv(r'Alpha.csv')
     return df
 df=load_data()
-st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')  
+st.set_page_config(layout='wide',page_title='Alpha Markert Analysis')  
 dataset_size = df.shape[0]
 num_features = df.shape[1]
 num_nan_values = df.isna().sum().sum()
