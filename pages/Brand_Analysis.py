@@ -9,24 +9,18 @@ from streamlit_option_menu import option_menu
 
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
 
-import sys
-import os
+desired_variable = None
 
-# Ensure the parent directory is in the sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Now you can perform the relative import
-from webapplication.py import uploaded_data
-
-# Use the imported variable
-print(f"The value of 'desired_variable' is: {desired_variable}")
+def set_variable(value):
+    global desired_variable
+    desired_variable = value
 
 with st.sidebar:
     # Load data
     st.header(' Input data')
 
 
-    uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+    uploaded_file = desired_varaible
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
     st.header('Analyzing top 10 Brands')
