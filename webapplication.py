@@ -88,7 +88,7 @@ with col6:
 
     fig12=px.bar(x=average_ratings.index,y=average_ratings.values,color=average_ratings.values,color_continuous_scale='viridis',title='Average Rating of Top 10 Brands')
     fig12.update_layout(xaxis_tickangle=-90)
-    fig12.add_trace(go.Line(x=average_ratings.index,y=average_ratings.values,name='Trend Line',line=dict(color='royalblue')))
+    fig12.add_trace(go.Scatter(x=average_ratings.index,y=average_ratings.values,name='Trend Line',line=dict(color='royalblue'),mode='lines'))
     fig12.update_layout(width=470)
     st.plotly_chart(fig12)
 
