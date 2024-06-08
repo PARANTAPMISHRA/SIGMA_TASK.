@@ -8,11 +8,7 @@ from streamlit_option_menu import option_menu
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
 
 
-desired_variable = None
 
-def set_variable(value):
-    global desired_variable
-    desired_variable = value
 
 with st.sidebar:
     # Load data
