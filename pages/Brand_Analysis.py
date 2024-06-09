@@ -15,7 +15,7 @@ with st.sidebar:
     st.header(' Input data')
 
 
-    uploaded_file = desired_varaible
+    uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
     st.header('Analyzing top 10 Brands')
