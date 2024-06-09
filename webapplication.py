@@ -15,6 +15,10 @@ with st.sidebar:
 
 
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+video_file = open('myvideo.mp4', 'rb')
+video_bytes = video_file.read()
+
+st.video(video_bytes)
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
       
