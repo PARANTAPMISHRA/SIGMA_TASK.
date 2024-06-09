@@ -10,7 +10,7 @@ from streamlit_option_menu import option_menu
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
 st.title('Shipping Time Analysis')
 with st.sidebar:
-    # Load data
+    
     st.header(' Input data')
 
 
