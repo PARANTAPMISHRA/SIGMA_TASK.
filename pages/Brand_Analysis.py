@@ -11,7 +11,7 @@ st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
 
 
 with st.sidebar:
-    # Load data
+    
     st.header(' Input data')
 
 
