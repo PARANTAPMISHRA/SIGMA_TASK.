@@ -15,7 +15,7 @@ with st.sidebar:
 
 
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
-video_file = open('streamlit-webapplication-2024-06-08-23-06-27.mp.4', 'rb')
+video_file = open('streamlit-webapplication-2024-06-08-23-06-27.mp4', 'rb')
 video_bytes = video_file.read()
 
 st.video(video_bytes)
