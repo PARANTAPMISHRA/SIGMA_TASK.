@@ -1,3 +1,4 @@
+#Importing all libraries
 import streamlit as st
 import pandas as pd
 import datetime 
@@ -5,11 +6,12 @@ from PIL import Image
 import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
+#Setting the page cofiguration for the webapp page.
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
 
 
 
-
+#Creating a sidebar for the webapp
 with st.sidebar:
     
     st.header(' Input data')
@@ -19,7 +21,7 @@ with st.sidebar:
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
     st.header('Analyzing top 10 Brands')
-    
+    #Creating a option menu.
     selected=option_menu(menu_title=None,options=['Brand Popularity','Average Price and Sales','Top Product'],orientation='horizontal')
     
     
@@ -59,9 +61,6 @@ if uploaded_file is not None:
         with col2:
             
             average_ratings = filtered_df.groupby('brand_name')['product_like_count'].mean()
-    
-            
-            average_ratings = average_ratings.reindex(top_brands)
     
             fig12=px.bar(x=average_ratings.index,y=average_ratings.values,color=average_ratings.values,color_continuous_scale='viridis',title='Average Product Ratings')
             fig12.update_layout(xaxis_tickangle=-90)
