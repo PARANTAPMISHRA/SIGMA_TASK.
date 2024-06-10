@@ -77,7 +77,7 @@ if uploaded_file is not None:
         with col1:
             average_prices = filtered_df.groupby('brand_name')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean()
     
-            fig14 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'brand_name': 'Brand', 'y': 'Average Price','variable':'Price Type'},color_discrete_sequence='aggrnyl')
+            fig14 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'brand_name': 'Brand', 'y': 'Average Price','variable':'Price Type'},color_continous_scale='aggrnyl')
             fig14.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type',width=680)
     
             st.plotly_chart(fig14)
