@@ -8,17 +8,23 @@ from streamlit_option_menu import option_menu
 
 
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
-st.title('Shipping Time Analysis')
 with st.sidebar:
     
     st.header(' Input data')
 
 
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+if uploaded_file is None:
+    st.title('Watch Demo till the file is being uploaded')
+    video_file = open('streamlit-webapplication-2024-06-08-23-06-27.mp4', 'rb')
+    video_bytes = video_file.read()
+    
+    st.video(video_bytes)
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
     value_count = df['usually_ships_within'].value_counts().reset_index()
     value_count.columns = ['shipping_time', 'Count']
+    st.title('Shipping Time Analysis')
     
     col1,col2=st.columns(2)
     
