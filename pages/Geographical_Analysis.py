@@ -9,15 +9,21 @@ from streamlit_option_menu import option_menu
 
 
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
-st.title('Analyzing the Top 10 Seller Countries')
+
 with st.sidebar:
     
     st.header(' Input data')
 
 
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+st.title('Watch Demo till the file is being uploaded')
+video_file = open('streamlit-webapplication-2024-06-08-23-06-27.mp4', 'rb')
+video_bytes = video_file.read()
+
+st.video(video_bytes)
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
+    st.title('Analyzing the Top 10 Seller Countries')
     selected=option_menu(menu_title=None,options=['Choropleth Chart','Bar Chart'],orientation='horizontal')
     
     if selected=='Choropleth Chart':
