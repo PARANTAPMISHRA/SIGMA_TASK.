@@ -78,7 +78,7 @@ if uploaded_file is not None:
         with col1:
             average_prices = filtered_df.groupby('brand_name')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean()
     
-            fig14 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'brand_name': 'Brand', 'y': 'Average Price','variable':'Price Type'},color_discrete_sequence=px.colors.sequential.Aggrnyl)
+            fig14 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'brand_name': 'Brand', 'y': 'Average Price','variable':'Price Type'},color_discrete_sequence='aggrnyl')
             fig14.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type',width=680)
     
             st.plotly_chart(fig14)
@@ -86,7 +86,7 @@ if uploaded_file is not None:
         with col2:
             
             brand_performance = filtered_df.groupby('brand_name')[['sold', 'reserved', 'available', 'in_stock', 'should_be_gone']].sum()
-            fig13 = px.bar(brand_performance,title='Performance of Top 10 Brands', labels={'brand_name': 'Brand', 'y': 'Count','variable':'Performance'},color_discrete_sequence=px.colors.sequential.Teal_r)
+            fig13 = px.bar(brand_performance,title='Performance of Top 10 Brands', labels={'brand_name': 'Brand', 'y': 'Count','variable':'Performance'},color_discrete_sequence='aggrnyl')
             st.plotly_chart(fig13)
     
     
@@ -104,7 +104,7 @@ if uploaded_file is not None:
     
         fig = px.bar(x=product_data.index, y=product_data.values,
                     labels={'x': 'Product', 'y': 'Frequency'},
-                    title=f'Top 10 Product Distribution for {selected_brand}',color_discrete_sequence=px.colors.sequential.Purpor)
+                    title=f'Top 10 Product Distribution for {selected_brand}',color_discrete_sequence='purpor')
         fig.update_xaxes(tickangle=90)
     
         with col1:
@@ -116,7 +116,7 @@ if uploaded_file is not None:
         
         fig = px.funnel_area(names=product_data.index, values=product_data.values,
                     labels={'names': 'Gender', 'values': 'Frequency'},
-                    title=f'Category Target of {selected_brand}',color_discrete_sequence=px.colors.sequential.Purpor)
+                    title=f'Category Target of {selected_brand}',color_discrete_sequence='purpor')
         fig.update_xaxes(tickangle=90)
     
         with col2:
