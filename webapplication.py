@@ -192,7 +192,7 @@ if uploaded_file is not None:
                         barmode='group',
                         title='Count of Shipping Times by Product Category',
                         labels={category_feature2: 'Product Category', 'count': 'Count', category_feature1: 'Shipping Time'},
-                        color_discrete_sequence='plasma')
+                        color_discrete_sequence=px.colors.qualitative.Pastel)
     
         
         fig21.update_layout(xaxis_tickangle=-45, 
