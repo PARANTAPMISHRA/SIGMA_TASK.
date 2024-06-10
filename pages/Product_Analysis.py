@@ -8,7 +8,7 @@ from streamlit_option_menu import option_menu
 
 
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
-st.title('Analyzing the most common products')
+
 with st.sidebar:
     
     st.header(' Input data')
@@ -17,6 +17,7 @@ with st.sidebar:
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
+    st.title('Analyzing the most common products')
     selected=option_menu(menu_title=None,options=['Product Popularity','Average Price and Category','Product Condition and Seasonality Analysis'],orientation='horizontal')
     
     value_count=df['product_type'].value_counts()
@@ -58,7 +59,7 @@ if uploaded_file is not None:
         
         average_prices = filtered_df.groupby('product_type')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean().reset_index()
     
-        
+        # Using melt function to get the graph as different columns in the bar chart.
         average_prices_melted = pd.melt(average_prices, id_vars='product_type', var_name='price_type', value_name='average_price')
     
         
