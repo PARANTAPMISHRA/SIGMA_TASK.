@@ -15,6 +15,12 @@ with st.sidebar:
 
 
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+if uploaded_file is None:
+    st.title('Watch Demo till the file is being uploaded')
+    video_file = open('streamlit-webapplication-2024-06-08-23-06-27.mp4', 'rb')
+    video_bytes = video_file.read()
+    
+    st.video(video_bytes)
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
     st.title('Analyzing the most common products')
@@ -145,7 +151,7 @@ if uploaded_file is not None:
                         labels={'index': 'Product Season', 'values': 'Count'},hole=0.5)
     
             
-            fig.update_layout(template='plotly_white')
+            
     
             
             st.plotly_chart(fig)
