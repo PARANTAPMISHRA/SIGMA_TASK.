@@ -255,7 +255,7 @@ if uploaded_file is not None:
             locationmode='country names',
             color='warehouse_name',
             title='Most Common warehouse by Country',
-            color_continuous_scale='plasma,
+            color_continuous_scale='plasma',
         )
         fig.update_layout()
         st.plotly_chart(fig)
