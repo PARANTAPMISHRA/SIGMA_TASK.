@@ -77,7 +77,7 @@ if uploaded_file is not None:
         with col1:
             average_prices = filtered_df.groupby('brand_name')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean()
     
-            fig14 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'brand_name': 'Brand', 'y': 'Average Price','variable':'Price Type'},color_discrete_sequence=px.colors.sequential.Aggrynl)
+            fig14 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'brand_name': 'Brand', 'y': 'Average Price','variable':'Price Type'},color_discrete_sequence=px.colors.sequential.Aggrnyl)
             fig14.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type',width=680)
     
             st.plotly_chart(fig14)
@@ -85,7 +85,7 @@ if uploaded_file is not None:
         with col2:
             
             brand_performance = filtered_df.groupby('brand_name')[['sold', 'reserved', 'available', 'in_stock', 'should_be_gone']].sum()
-            fig13 = px.bar(brand_performance,title='Performance of Top 10 Brands', labels={'brand_name': 'Brand', 'y': 'Count','variable':'Performance'},color_discrete_sequence=px.colors.sequential.Aggrynl)
+            fig13 = px.bar(brand_performance,title='Performance of Top 10 Brands', labels={'brand_name': 'Brand', 'y': 'Count','variable':'Performance'},color_discrete_sequence=px.colors.sequential.Aggrnyl)
             st.plotly_chart(fig13)
     
     
