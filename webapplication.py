@@ -1,4 +1,4 @@
-
+# Importing Libraries
 import streamlit as st
 import pandas as pd
 import datetime 
@@ -7,8 +7,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
 
+#Setting the configuration of the webapp layout.
 st.set_page_config(layout='wide',page_title='Alpha Markert Analysis')
 
+#Creating a block to determine the layout of the sidebar.
 with st.sidebar:
     
     st.header(' Input data')
@@ -26,7 +28,7 @@ if uploaded_file is not None:
     
     dataset_size = df.shape[0]
     num_features = df.shape[1]
-    num_nan_values = df.isna().sum().sum()
+    num_nan_values = df.isna().sum().sum() # Two sum( ) as first will give the number of nan in columns and second will give the overall nan values.
 
         
     st.title('Dataset Overview')
@@ -72,14 +74,14 @@ if uploaded_file is not None:
         top_brands_stats.sort_values(by='Name',ascending=True,inplace=True)
     
         brand_count=top_brands_stats[['Name','Count']]
-        brand_count=top_brands_stats[['Name','Count']]
+        
     
         
         top_brands = brand_count['Name']  
     
         
         filtered_df = df[df['brand_name'].isin(top_brands)]
-        
+        # creating this dataframe as I will be using this to group the other features as top_brands only contain name of brands and their count.
         average_prices = filtered_df.groupby('brand_name')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean()
     
         
@@ -96,7 +98,7 @@ if uploaded_file is not None:
         average_ratings = filtered_df.groupby('brand_name')['product_like_count'].mean()
     
         
-        average_ratings = average_ratings.reindex(top_brands)
+        #average_ratings = average_ratings.reindex(top_brands)
     
         fig12=px.bar(x=average_ratings.index,y=average_ratings.values,color=average_ratings.values,color_continuous_scale='viridis',title='Average Rating of Top 10 Brands')
         fig12.update_layout(xaxis_tickangle=-90)
@@ -116,21 +118,21 @@ if uploaded_file is not None:
                 locationmode='country names',
                 color='brand_name',
                 title='Most Common Brands by Country',
-                color_continuous_scale=px.colors.sequential.Plasma,
+                color_continuous_scale='plasma',
             )
         fig.update_layout(width=600)
         st.plotly_chart(fig)
     
     
     with col15:
-        product_type = df.groupby('seller_country')['product_type'].agg(lambda x: x.value_counts().idxmax()).reset_index()
+        product_type = df.groupby('seller_country')['product_type'].agg(lambda x: x.value_counts().idxmax()).reset_index() #This is used to find the maximum occurances of each product_type in the given seller_country.
         fig = px.choropleth(
             product_type,
             locations='seller_country',
             locationmode='country names',
             color='product_type',
             title='Most Common Product by Country',
-            color_continuous_scale=px.colors.sequential.Plasma,
+            color_continuous_scale='plasma',
         )
         
         st.plotly_chart(fig)
@@ -163,7 +165,7 @@ if uploaded_file is not None:
     
     with col9:
         
-        value_count = df['usually_ships_within'].value_counts().reset_index()
+        value_count = df['usually_ships_within'].value_counts().reset_index() #reset_index( ) is used to do convet a sequence to dataframe. 
         value_count.columns = ['shipping_time', 'Count']
     
         
@@ -173,7 +175,7 @@ if uploaded_file is not None:
                     title='Distribution of Shipping Times',
                     labels={'shipping_time': 'Shipping Time', 'Count': 'Count'},
                     color='shipping_time',
-                    color_continuous_scale='Viridis')
+                    color_continuous_scale='viridis')
     
         
         fig20.update_layout(xaxis_tickangle=-90,width=350)
@@ -190,7 +192,7 @@ if uploaded_file is not None:
                         barmode='group',
                         title='Count of Shipping Times by Product Category',
                         labels={category_feature2: 'Product Category', 'count': 'Count', category_feature1: 'Shipping Time'},
-                        color_discrete_sequence=px.colors.qualitative.Pastel)
+                        color_discrete_sequence='pastel')
     
         
         fig21.update_layout(xaxis_tickangle=-45, 
@@ -242,10 +244,6 @@ if uploaded_file is not None:
         st.plotly_chart(fig24)
     
     
-    from plotly.subplots import make_subplots
-    import plotly.graph_objects as go
-    
-    
     with col13:
         
         warehouse = df.groupby('seller_country')['warehouse_name'].agg(lambda x: x.value_counts().idxmax()).reset_index()
@@ -257,7 +255,7 @@ if uploaded_file is not None:
             locationmode='country names',
             color='warehouse_name',
             title='Most Common warehouse by Country',
-            color_continuous_scale=px.colors.sequential.Plasma,
+            color_continuous_scale='plasma,
         )
         fig.update_layout()
         st.plotly_chart(fig)
