@@ -87,6 +87,7 @@ def user_input():
                 'seller_country':_seller_country
                 }
     input_dataframe=pd.DataFrame(input_data,index=[0])
+    st.divider()
     st.table(input_dataframe)
     return input_data
 X=user_input()
