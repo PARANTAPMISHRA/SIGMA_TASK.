@@ -63,7 +63,8 @@ if uploaded_file is not None:
                             labels={'names': 'Brand Name', 'values': 'Number of Products'}, 
                             title='Brand Popularity',hole=0.5)
                 fig7.update_layout(width=440)
-                st.plotly_chart(fig7)
+                with st.container(border=True):
+                    st.plotly_chart(fig7)
         
         with st.container(border=True):
             with col5:
@@ -95,7 +96,8 @@ if uploaded_file is not None:
                 
                 fig14.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type')
                 fig14.update_layout(width=460)
-                st.plotly_chart(fig14)
+                with st.container(border=True):
+                    st.plotly_chart(fig14)
         
         with st.container(border=True):
             with col6:
@@ -109,7 +111,8 @@ if uploaded_file is not None:
                 fig12.update_layout(xaxis_tickangle=-90)
                 fig12.add_trace(go.Scatter(x=average_ratings.index,y=average_ratings.values,name='Trend Line',line=dict(color='royalblue')))
                 fig12.update_layout(width=470)
-                st.plotly_chart(fig12)
+                with st.container(border=True):
+                    st.plotly_chart(fig12)
         
         
         col14,col15=st.columns(2)
