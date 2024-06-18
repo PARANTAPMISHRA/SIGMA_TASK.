@@ -108,10 +108,24 @@ with col2:
 
     st.markdown('**Feature Dependencies**')
     st.image('Feature_dependencies.png')
-    
-    st.markdown('Libraries used:')
-    st.code('''- Pandas for data wrangling
-    - Scikit-learn for building a machine learning model
-    - Altair for chart creation
-    - Streamlit for user interface
-    ''', language='markdown')
+import json 
+import requests 
+  
+import streamlit as st 
+from streamlit_lottie import st_lottie 
+  
+url = requests.get( 
+    "https://lottie.host/32794781-95ce-47a0-80c0-88fc4277d7db/Utqv94EUlQ.json") 
+# Creating a blank dictionary to store JSON file, 
+# as their structure is similar to Python Dictionary 
+url_json = dict() 
+  
+if url.status_code == 200: 
+    url_json = url.json() 
+else: 
+    print("Error in the URL") 
+  
+  
+st.title("Adding Lottie Animation in Streamlit WebApp") 
+  
+st_lottie(url_json)
