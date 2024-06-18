@@ -23,9 +23,9 @@ else:
   
 
   
-st_lottie(url_json,height=40,width=40)
+a=st_lottie(url_json,height=40,width=40)
 
-st.title('Machine Learning Model To Predict Price')
+st.title('Machine Learning Model To Predict Price',icon=a)
 import joblib
 seller_price,seller_earning,product_like_count,product_type,product_category,product_season,brand_name,product_material,product_color,product_condition,warehouse,seller_badge,shipping_time,seller_country=joblib.load('unique_values_data.joblib')
 def user_input():
