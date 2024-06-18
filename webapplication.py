@@ -54,62 +54,62 @@ if uploaded_file is not None:
         
         col4,col5,col6=st.columns([1,1,1])
         
+        with st.container(border=True):
+            with col4:
+                
+                brand_popularity = df['brand_name'].value_counts().head(10)
+                
+                fig7 = px.pie(names=brand_popularity.index, values=brand_popularity.values, 
+                            labels={'names': 'Brand Name', 'values': 'Number of Products'}, 
+                            title='Brand Popularity',hole=0.5)
+                fig7.update_layout(width=440)
+                st.plotly_chart(fig7)
         
-        with col4:
+        with st.container(border=True):
+            with col5:
             
-            brand_popularity = df['brand_name'].value_counts().head(10)
+                top_n_brands = 10
             
-            fig7 = px.pie(names=brand_popularity.index, values=brand_popularity.values, 
-                        labels={'names': 'Brand Name', 'values': 'Number of Products'}, 
-                        title='Brand Popularity',hole=0.5)
-            fig7.update_layout(width=440,legend=False)
-            st.plotly_chart(fig7)
-        
-        
-        with col5:
-        
-            top_n_brands = 10
-        
+                
+                brand_counts = df['brand_name'].value_counts().head(top_n_brands)
             
-            brand_counts = df['brand_name'].value_counts().head(top_n_brands)
-        
+                
+                top_brands_df = df[df['brand_name'].isin(brand_counts.index)]
+                top_brands_stats = pd.DataFrame({'Name': brand_counts.index,'Count': brand_counts.values})
+                top_brands_stats.sort_values(by='Name',ascending=True,inplace=True)
             
-            top_brands_df = df[df['brand_name'].isin(brand_counts.index)]
-            top_brands_stats = pd.DataFrame({'Name': brand_counts.index,'Count': brand_counts.values})
-            top_brands_stats.sort_values(by='Name',ascending=True,inplace=True)
-        
-            brand_count=top_brands_stats[['Name','Count']]
+                brand_count=top_brands_stats[['Name','Count']]
+                
             
-        
+                
+                top_brands = brand_count['Name']  
             
-            top_brands = brand_count['Name']  
-        
+                
+                filtered_df = df[df['brand_name'].isin(top_brands)]
+                # creating this dataframe as I will be using this to group the other features as top_brands only contain name of brands and their count.
+                average_prices = filtered_df.groupby('brand_name')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean()
             
-            filtered_df = df[df['brand_name'].isin(top_brands)]
-            # creating this dataframe as I will be using this to group the other features as top_brands only contain name of brands and their count.
-            average_prices = filtered_df.groupby('brand_name')[['price_usd', 'seller_price', 'seller_earning', 'buyers_fees']].mean()
-        
+                
+                fig14 = px.bar(average_prices,title='Average Prices of Top 10 Brands', labels={'x': 'Brand', 'y': 'Average Price','variable':'Price Type'})
             
-            fig14 = px.bar(average_prices,title='Average Prices of Top 10 Brands', labels={'x': 'Brand', 'y': 'Average Price','variable':'Price Type'})
+                
+                fig14.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type')
+                fig14.update_layout(width=460)
+                st.plotly_chart(fig14)
         
+        with st.container(border=True):
+            with col6:
+                
+                average_ratings = filtered_df.groupby('brand_name')['product_like_count'].mean()
             
-            fig14.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type')
-            fig14.update_layout(width=460)
-            st.plotly_chart(fig14)
-        
-        
-        with col6:
+                
+                #average_ratings = average_ratings.reindex(top_brands)
             
-            average_ratings = filtered_df.groupby('brand_name')['product_like_count'].mean()
-        
-            
-            #average_ratings = average_ratings.reindex(top_brands)
-        
-            fig12=px.bar(x=average_ratings.index,y=average_ratings.values,color=average_ratings.values,color_continuous_scale='viridis',title='Average Rating of Top 10 Brands')
-            fig12.update_layout(xaxis_tickangle=-90)
-            fig12.add_trace(go.Scatter(x=average_ratings.index,y=average_ratings.values,name='Trend Line',line=dict(color='royalblue')))
-            fig12.update_layout(width=470)
-            st.plotly_chart(fig12)
+                fig12=px.bar(x=average_ratings.index,y=average_ratings.values,color=average_ratings.values,color_continuous_scale='viridis',title='Average Rating of Top 10 Brands')
+                fig12.update_layout(xaxis_tickangle=-90)
+                fig12.add_trace(go.Scatter(x=average_ratings.index,y=average_ratings.values,name='Trend Line',line=dict(color='royalblue')))
+                fig12.update_layout(width=470)
+                st.plotly_chart(fig12)
         
         
         col14,col15=st.columns(2)
