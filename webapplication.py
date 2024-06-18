@@ -62,7 +62,7 @@ if uploaded_file is not None:
                 fig7 = px.pie(names=brand_popularity.index, values=brand_popularity.values, 
                             labels={'names': 'Brand Name', 'values': 'Number of Products'}, 
                             title='Brand Popularity',hole=0.5)
-                fig7.update_layout(width=440)
+                fig7.update_layout(width=440,showlegend=False)
                 with st.container(border=True):
                     st.plotly_chart(fig7)
         
