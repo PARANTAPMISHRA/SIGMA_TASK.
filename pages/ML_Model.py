@@ -6,6 +6,25 @@ import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
 st.set_page_config(layout='wide',page_title='EDA',page_icon='bar_chart')
+import json 
+import requests 
+from streamlit_lottie import st_lottie 
+  
+url = requests.get( 
+    "https://lottie.host/32794781-95ce-47a0-80c0-88fc4277d7db/Utqv94EUlQ.json") 
+
+url_json = dict() 
+  
+if url.status_code == 200: 
+    url_json = url.json() 
+else: 
+    print("Error in the URL") 
+  
+  
+
+  
+st_lottie(url_json,height=40,width=40)
+
 st.title('Machine Learning Model To Predict Price')
 import joblib
 seller_price,seller_earning,product_like_count,product_type,product_category,product_season,brand_name,product_material,product_color,product_condition,warehouse,seller_badge,shipping_time,seller_country=joblib.load('unique_values_data.joblib')
@@ -108,24 +127,3 @@ with col2:
 
     st.markdown('**Feature Dependencies**')
     st.image('Feature_dependencies.png')
-import json 
-import requests 
-  
-import streamlit as st 
-from streamlit_lottie import st_lottie 
-  
-url = requests.get( 
-    "https://lottie.host/32794781-95ce-47a0-80c0-88fc4277d7db/Utqv94EUlQ.json") 
-# Creating a blank dictionary to store JSON file, 
-# as their structure is similar to Python Dictionary 
-url_json = dict() 
-  
-if url.status_code == 200: 
-    url_json = url.json() 
-else: 
-    print("Error in the URL") 
-  
-  
-st.title("Adding Lottie Animation in Streamlit WebApp") 
-  
-st_lottie(url_json)
