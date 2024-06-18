@@ -21,7 +21,7 @@ else:
     print("Error in the URL") 
   
   
-col20,col21=st.columns([1,9)
+col20,col21=st.columns([1,9])
   
 with col20:
   st_lottie(url_json,height=100,width=100)
