@@ -16,11 +16,11 @@ with st.sidebar:
     
     st.header(' Input data')
 
-    @st.cache_data(experimental_allow_widgets=True)
-    def load_cache_data():
-        uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
-        return uploaded_file
-uploaded_file=load_cache_data()
+
+    
+    uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
+        
+
 if uploaded_file is None:
     st.title('Watch Demo till the file is being uploaded')
     video_file = open('streamlit-webapplication-2024-06-08-23-06-27.mp4', 'rb')
