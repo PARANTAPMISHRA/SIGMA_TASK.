@@ -31,8 +31,8 @@ if uploaded_file is not None:
     num_features = df.shape[1]
     num_nan_values = df.isna().sum().sum() # Two sum( ) as first will give the number of nan in columns and second will give the overall nan values.
 
-        
-    st.title('Dataset Overview')
+    with st.container():    
+        st.title('Dataset Overview')
     
     col1, col2, col3 = st.columns(3)
     
