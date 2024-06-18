@@ -71,9 +71,9 @@ def user_input():
 X=user_input()
 st.write('----')
 import pickle
-with open('D:\Task\saved_model_ (1).pkl', 'rb') as f:
+with open('saved_model_ (1).pkl', 'rb') as f:
     model=pickle.load(f)
-with open('D:\Task\label_encoders_.pkl', 'rb') as f:
+with open('label_encoders_.pkl', 'rb') as f:
     loaded_label_encoders=pickle.load(f)
 with open('scaler_.pkl', 'rb') as file:
     loaded_scalers = pickle.load(file)
