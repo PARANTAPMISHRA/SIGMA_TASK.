@@ -21,11 +21,13 @@ else:
     print("Error in the URL") 
   
   
-
+col20,col21=st.columns(2)
   
-a=st_lottie(url_json,height=40,width=40)
+with col20:
+  st_lottie(url_json,height=100,width=100)
 
-st.title('Machine Learning Model To Predict Price',icon=a)
+with col21:
+  st.title('Machine Learning Model To Predict Price')
 import joblib
 seller_price,seller_earning,product_like_count,product_type,product_category,product_season,brand_name,product_material,product_color,product_condition,warehouse,seller_badge,shipping_time,seller_country=joblib.load('unique_values_data.joblib')
 def user_input():
