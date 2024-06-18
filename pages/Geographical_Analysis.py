@@ -25,7 +25,29 @@ if uploaded_file is None:
     st.video(video_bytes)
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file, index_col=False)
-    st.title('Analyzing the Top 10 Seller Countries')
+    import json 
+    import requests 
+    from streamlit_lottie import st_lottie 
+  
+    url = requests.get( 
+    "https://lottie.host/0b8efe05-edaf-4e86-b24c-b371363a9a31/w5jXb7Rp4k.json") 
+
+    url_json = dict() 
+  
+    if url.status_code == 200:
+        url_json = url.json() 
+    else: 
+    print("Error in the URL") 
+  
+  
+    col20,col21=st.columns([1,9])
+  
+    with col20:
+        st_lottie(url_json,height=100,width=100)
+
+    with col21:
+      
+        st.title('Analyzing the Top 10 Seller Countries')
     selected=option_menu(menu_title=None,options=['Choropleth Chart','Bar Chart'],orientation='horizontal')
     
     if selected=='Choropleth Chart':
