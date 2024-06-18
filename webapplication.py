@@ -143,7 +143,7 @@ if uploaded_file is not None:
                 title='Most Common Product by Country',
                 color_continuous_scale='plasma',
             )
-             fig.update_layout(width=600,showlegend=False)
+            fig.update_layout(width=600,showlegend=False)
             with st.container(border=True):
                 st.plotly_chart(fig)
         
