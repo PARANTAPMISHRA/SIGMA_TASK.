@@ -15,7 +15,7 @@ with st.sidebar:
     
     st.header(' Input data')
 
-
+    @st.cache_data
     uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 if uploaded_file is None:
     st.title('Watch Demo till the file is being uploaded')
