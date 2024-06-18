@@ -16,7 +16,7 @@ with st.sidebar:
     
     st.header(' Input data')
 
-    @st.cache(allow_output_mutation=True)
+    @st.cache_data(allow_output_mutation=True)
     def load_cache_data():
         uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
         return uploaded_file
