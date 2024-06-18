@@ -129,7 +129,8 @@ if uploaded_file is not None:
                     color_continuous_scale='plasma',
                 )
             fig.update_layout(width=600)
-            st.plotly_chart(fig)
+            with st.container(border=True):
+                st.plotly_chart(fig)
         
         
         with col15:
@@ -143,7 +144,8 @@ if uploaded_file is not None:
                 color_continuous_scale='plasma',
             )
             
-            st.plotly_chart(fig)
+            with st.container(border=True):
+                st.plotly_chart(fig)
         
         col7,col8=st.columns(2)
         
@@ -152,7 +154,8 @@ if uploaded_file is not None:
             value_count=df['product_type'].value_counts()
             fig15=px.bar(x=value_count.index[0:10], y=value_count.values[0:10], color=value_count.values[0:10],color_discrete_sequence='agsunset',title='Top 10 Products',labels={'x':'Product','y':'Count'})
             fig15.update_layout(xaxis_tickangle=-45)
-            st.plotly_chart(fig15)
+            with st.container(border=True):
+                st.plotly_chart(fig15)
         
         
         with col8:
@@ -165,7 +168,8 @@ if uploaded_file is not None:
             fig17 = px.bar(average_prices,title='Average Prices based on Product Type', labels={'x': 'Brand', 'y': 'Average Price','variable':'Price Type'})
             
             fig17.update_layout(xaxis_tickangle=-45, legend_title_text='Price Type')
-            st.plotly_chart(fig17)
+            with st.container(border=True):
+                st.plotly_chart(fig17)
         
         
         col9,col10,col11=st.columns(3)
@@ -187,7 +191,8 @@ if uploaded_file is not None:
         
             
             fig20.update_layout(xaxis_tickangle=-90,width=350)
-            st.plotly_chart(fig20)
+            with st.container(border=True):
+                st.plotly_chart(fig20)
         
         
         with col10:
@@ -206,7 +211,8 @@ if uploaded_file is not None:
             fig21.update_layout(xaxis_tickangle=-45, 
                             yaxis_title='Count', 
                             xaxis_title='Product Category',width=350)
-            st.plotly_chart(fig21)
+            with st.container(border=True):
+                st.plotly_chart(fig21)
         
         
         with col11:
@@ -226,7 +232,8 @@ if uploaded_file is not None:
             fig22.update_layout(xaxis_tickangle=-45, 
                             yaxis_title='Count', 
                             xaxis_title='Warehouse Name',width=350)
-            st.plotly_chart(fig22)
+            with st.container(border=True):
+                st.plotly_chart(fig22)
         
         
         col12,col13=st.columns(2)
@@ -249,7 +256,8 @@ if uploaded_file is not None:
             fig24.update_layout(geo=dict(showframe=False, 
                                         projection_type='equirectangular'),
                             coloraxis_colorbar=dict(title='Count'))
-            st.plotly_chart(fig24)
+            with st.container(border=True):
+                st.plotly_chart(fig24)
         
         
         with col13:
@@ -266,6 +274,7 @@ if uploaded_file is not None:
                 color_continuous_scale='plasma',
             )
             fig.update_layout()
-            st.plotly_chart(fig)
+            with st.container(border=True):
+                st.plotly_chart(fig)
 
 
