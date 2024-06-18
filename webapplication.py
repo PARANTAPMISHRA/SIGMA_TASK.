@@ -37,15 +37,19 @@ if uploaded_file is not None:
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.metric(label="Dataset Size", value=dataset_size)
+            with st.container(border=True):
+                st.metric(label="Dataset Size", value=dataset_size)
         
         
         with col2:
-            st.metric(label="Number of Features", value=num_features)
+            with st.container(border=True):
+                
+                st.metric(label="Number of Features", value=num_features)
         
         
         with col3:
-            st.metric(label="Number of NaN Values", value=num_nan_values)
+            with st.container(border=True):
+                st.metric(label="Number of NaN Values", value=num_nan_values)
         
         
         col4,col5,col6=st.columns([1,1,1])
