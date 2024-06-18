@@ -37,7 +37,7 @@ if uploaded_file is not None:
     if url.status_code == 200:
         url_json = url.json() 
     else: 
-    print("Error in the URL") 
+        print("Error in the URL") 
   
   
     col20,col21=st.columns([1,9])
